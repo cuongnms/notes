@@ -1,0 +1,24 @@
+Integrity constraint:
+    - Là các rule ràng buộc để đảm bảo chất lượng của data
+    - Có 4 loại:
+        + Domain constraint (ràng buộc domain): Define thông qua định nghĩa kiểu dữ liệu của các thuộc tính. Ví dụ kiểu int k chứa dữ liệu kiểu string...
+        + Entity integrity constraint (Toàn vẹn thực thể): Primary key của một entity không thể null.
+        + Referential integrity constraint (Toàn vẹn tham chiếu): Thể hiện qua data ràng buộc giữa các bảng có quan hệ khóa ngoại. Data ở cột khóa ngoại của một bảng phải tồn tại hoặc là null trong khóa chính của bảng tham chiếu.
+        + Key constraint (ràng buộc key): 
+
+Atomicity:
+    - All or nothing rule. Tất cả action trong 1 transaction cùng được thực hiện hoặc không có action nào được thực hiện nếu xảy ra lỗi.
+
+Consistency:
+    - Các integrity constraint phải được đảm bảo trước và sau khi thực hiện transaction. Ví dụ toàn vẹn về kiểu dữ liệu, data...
+
+Isolation:
+    - Là mức độ cô lập dữ liệu của transaction này so với transaction khác.
+    - Có 4 level isolation:
+        + Read uncommitted: Các transaction đọc đc các data mới nhất không quan tâm đã được commit chưa. Do không bị lock nên performance tốt. Tuy nhiên nếu có rollback thì sẽ dẫn đến sai lệch dữ liệu. Postgresql k cho phép, MySQL cho phép. (Dirty read)
+        + Read committed: Default mode hầu hết các rmdb. Xảy ra vấn đề khi data đọc đc ở các thời điểm không giống nhau trong cùng một transaction. (Non repeatable read và phantom read).
+        + Repeatable read: Đảm bảo data thống nhất trong tất cả các query trong cùng một transaction không quan tâm các transaction khác đã commit update hay chưa. Tuy nhiên vẫn xảy ra vấn đề khi có update transaction đồng thời.
+        + Serializable: Xử lý tuần tự các transaction.
+
+Durability:
+    - Đảm bảo một khi transaction được xử lý xong, tất cả các thay đổi phải được thực hiện và lưu trữ kể cả có lỗi hay mất điện.
