@@ -16,7 +16,7 @@ Isolation:
     - Là mức độ cô lập dữ liệu của transaction này so với transaction khác.
     - Có 4 level isolation:
         + Read uncommitted: Các transaction đọc đc các data mới nhất không quan tâm đã được commit chưa. Do không bị lock nên performance tốt. Tuy nhiên nếu có rollback thì sẽ dẫn đến sai lệch dữ liệu. Postgresql k cho phép, MySQL cho phép. (Dirty read)
-        + Read committed: Default mode hầu hết các rmdb. Xảy ra vấn đề khi data đọc đc ở các thời điểm không giống nhau trong cùng một transaction. (Non repeatable read và phantom read).
+        + Read committed: Default mode hầu hết các rmdb. Transaction đợi dữ liệu được commit ở transaction khác hoàn thành rồi mới đọc. Xảy ra vấn đề khi data đọc đc ở các thời điểm không giống nhau trong cùng một transaction. (Non repeatable read và phantom read).
         + Repeatable read: Đảm bảo data thống nhất trong tất cả các query trong cùng một transaction không quan tâm các transaction khác đã commit update hay chưa. Tuy nhiên vẫn xảy ra vấn đề khi có update transaction đồng thời.
         + Serializable: Xử lý tuần tự các transaction.
 

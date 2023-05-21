@@ -1,0 +1,16 @@
+Entity status:
+    - Transient: Đối tượng không nằm trong session hiện tại. Chưa có bản ghi tương ứng trong database.
+    - Persistent: Đối tượng đang trong session, trạng thái của nó được đồng bộ với database khi commit session.
+    - Detached: Đối tượng đã từng có trạng thái persistent nhưng hiện tại k nằm trong sesion.
+    - Removed: Tương tự detached nhưng bản ghi tương ứng trong database đã bị xóa.
+
+Retrieve object:
+    - load, get (hibernate), find: Load chỉ trả về proxy object và chỉ query vào db khi object cần sử dụng, throw exception nếu k có object. Get và find thì query vào db ngay lập tức, trả về null nếu k có object.
+Add/update object: Transient -> Persistent.
+    - persist, save (hibernate), merge, update (hibernate), saveOrUpdate (hibernate)
+Remove object: Persistent -> Detached.
+    - evict, clear
+Readd object: Detached -> Persistent.
+    - refresh
+Delete object: Detached -> Remove
+    - delete, remove
