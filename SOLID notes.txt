@@ -1,0 +1,16 @@
+1. Single responsibility principle
+	- Một class chỉ nên giữ một chức năng duy nhất. Việc chứa nhiều tính năng trong một class khiến class phình to, khó maintain.
+	
+2. Open/closed principle.
+	- Một class có thể mở rộng nhưng không được sửa đổi bên trong.
+	- Khi muốn thêm feature thì cần tạo thêm class có quan hệ IS-A hoặc HAS-A, không nên sửa đổi class cũ.
+	
+3. Liskov substitution principle.
+	- Các object của class con có thể thay thế class cha mà không làm thay đổi tính đúng đắn của chương trình.
+	
+4. Interface segregation principle.
+	- Một interface chỉ nên chứa các method liên quan tới nhau, không định nghĩa nhiều method trong một interface.
+	
+5. Depencency inversion principle
+	- Các module cấp cao k nên phụ thuộc vào module cấp thấp mà cả 2 nên phụ thuộc vào abtraction
+	

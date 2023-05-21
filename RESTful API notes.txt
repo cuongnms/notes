@@ -1,0 +1,26 @@
+Rest API: Các API tuân theo tiêu chuẩn rest. Các request là stateless
+
+HTTP GET: 
+	- Chỉ nhận về resource và k thay đổi trạng thái của resource -> Safe method.
+	- Thực hiện nhiều GET request chỉ trả về cùng một kết quả -> Idempotent.
+	- Có thể cache
+	
+HTTP POST:
+	- Sử dụng để tạo mới resource.
+	- Không được browser cache.
+	- Cùng một request khi thực hiện nhiều lần sẽ tạo mới nhiều resource -> không idempotent
+	
+HTTP PUT:
+	- Sử dụng để update, replace một resource có sẵn 
+	- Không được browser cache.
+	- Cùng 1 request khi thực hiện nhiều lần sẽ chỉ update resource 1 lần -> idempotent.
+
+HTTP PATCH:
+	- Update một phần resource
+	- Không idempotent.
+	
+HTTP DELETE:
+	- Xóa resource.
+	- Idempotent
+	
+	

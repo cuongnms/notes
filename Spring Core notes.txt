@@ -1,0 +1,22 @@
+Ưu điểm của spring boot:
+	- Giảm thời gian phát triển và tăng năng suất
+	- Tránh phải viết boilerplate code, configuration bằng xml
+	- Tích hợp embedded server Tomcat.
+	- Tính năng quan trọng nhất là autofiguration.
+	- Cung cấp in memory database như H2
+
+Để thêm xử lý sau khi tạo ra một bean: Sử dụng @PostContruct
+Để thêm xử lý trước khi bean bị remove: Sử dụng @PreDestroy
+Đánh dấu một class là bean: Sử dụng @Component
+Đánh dấu một class là config: Sử dụng @Configuration -> Sử dụng để gom các bean có xử lý phức tạo để khởi tạo hoặc nhiều bean liên quan đến nhau
+Inject bean vào một bean khác: Sử dụng @Autowired, Contructor, Setter.
+Có nhiều bean trùng nhau: Sử dụng @Primary để xác định bean ưu tiên hoặc chỉ định rõ bean bằng @Qualifier
+Các loại scope của bean:
+	- Singleton: IOC container chỉ khởi tạo duy nhất một object từ class bean
+	- Prototype: Tạo object riêng biệt với mỗi lần sử dụng
+	- Request: Mỗi request tạo một object bean riêng biệt.
+	- Session: Mỗi session tạo một object bean riêng biệt.
+
+Component scan:
+	- Bắt đầu scan từ class có @SpringBootApplication. Package chứa class này là package gốc. Sau đó tìm xuống các package thấp hơn để tạo các bean.
+	

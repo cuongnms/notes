@@ -1,0 +1,54 @@
+1. Các level cache
+	- Computer hardware: L1, L2, L3 cache
+	- Operating system level: Page cache, file system caches.
+	- Application:
+		- Frontend: Web browser cache, CDN
+		- Backend: Load balancer cache
+
+2. Cache strategy
+	- Cache aside: 
+		+ Application có thể giao tiếp với cả cache và database.
+		+ Application check data trong cache. Nếu có thì lấy trực tiếp từ cache. Nếu không có thì get data từ database và update vào cache
+		+ Ưu điểm:
+			- Khi cache server chết hoặc cache miss thì app vẫn hoạt động bình thường.
+		+ Nhược điểm:
+			- Cache miss khi truy vấn dữ liệu lần đầu hoặc khi data trong cache hết hạn -> Cần load dữ liệu thủ công vào cache.
+			- Khó quản lý.
+			- Có độ trễ khi dữ liệu invalid.
+		-> Sử dụng khi read heavy workload. Các data tốn thời gian tính toán xử lý, dùng lại nhiều lần
+	
+	
+	- Read through cache:
+		+ App giao tiếp với cache.
+		+ App gửi request tới cache. Cache check có dữ liệu thì return về cho app. Nếu không có thì lấy data từ database, update cho nó và gửi về app.
+		+ Ưu điểm:
+			- Cache server xử lý vấn đề cache miss. App k cần xử lý gì
+		+ Nhược điểm:
+			- Tìm được app, platform phù hợp để làm cache server.
+			- Bắt buộc phải cache tất cả data.
+		-> Sử dụng khi read heavy workload
+	
+	
+	- Write through cache
+		+ Khi có request write thì data được lưu vào cache. Sau đó cache sẽ request lưu data vào database.
+		+ Ưu điểm: 
+			- Không có cache miss
+			- Data luôn mapping với database
+		+ Nhược điểm:
+			- Cache tất cả data -> rác.
+			- Quá trình lưu data lâu do phải chờ lưu xuống cache và database.
+		-> Dùng với write heavy workload
+		-> Kết hợp với read through cache giúp data luôn đồng nhất
+	
+	
+	- Write back
+		+ Khi có request write thì data lưu vào cache nhưng không lưu luôn xuống database mà lưu định kỳ hoặc theo số lượng data sẽ lưu.
+		+ Ưu điểm: Giảm tải write xuống database.
+		+ Nhược điểm: 
+			- Data có thể k đồng nhất với database do chưa kịp đồng bộ data giữa cache và database
+			- Cache server chết -> mất hết data chưa kịp đồng bộ database.
+		-> Kết hợp với read through cache tốt cho cả read và write heavy workload.
+		
+	
+	- Write around
+		+ App lưu data trực tiếp vào database và đọc data qua cache aside hoặc read through cache
