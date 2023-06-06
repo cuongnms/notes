@@ -1,0 +1,25 @@
+1. Problem in concurrent application
+    - Data race: Xảy ra khi hai hay nhiều thread cùng write vào một shared variable mà k có cơ chế đồng bộ. Tùy thuộc vào thứ tự xử lý các thread mà giá trị của biến bị thay đổi.
+    - Dead lock: Xảy ra khi 2 hoặc nhiều thread giữ một resource và đợi resource từ thread khác release dẫn đến các thread đợi lẫn nhau mãi mãi.
+        4 condition xảy ra deadlock:
+            + Mutual exclusion: Một resource chỉ được sử dụng bởi 1 thread trong 1 thời điểm.
+            + No pre-emption: Một resource chỉ được release bởi thread đang chiếm giữ nó.
+            + Hold and wait: Một thread chiếm giữ 1 resource nhưng yêu cầu sử dụng một resource khác do thread khác chiếm giữ.
+            + Circular wait: Tồn tại một vòng đợi trong đó thread 1 đợi resource hold bởi thread 2, thread 2 đợi resource hold bởi thread n, thread n đợi resource hold bởi thread 1.
+        Cách xử lý deadlock:
+            + Xử lý logic đảm bảo không xảy ra 4 điều kiện deadlock
+            + Ignore deadlock và restart application.
+            + Detection: Tạo thread theo dõi phân tích trạng thái của hệ thống. Nếu có deadlock thì terminate thread hoặc force release resource...
+    - Live lock: Xảy ra khi 2 thread rơi vào trạng thái liên tục thay đổi trạng thái dựa vào thread còn lại và không thể xử lý tiếp.
+    - Resource starvation: Xảy ra khi 1 thread phải chờ đợi rất lâu hoặc không thể lấy được resource để thực hiện
+    - Priority inversion: Xảy ra khi thread có mức ưu tiên thấp giữ resource mà thread có mức ưu tiên cao đang cần. Thread này đc finish trước thread có mức ưu tiên cao hơn.
+2. Các cơ chế đồng bộ
+    - synchonize keywork: Cho phép định nghĩa vùng code hoặc method cần chạy đồng bộ
+    - Lock:
+    - Semaphore:
+    - CountdownLatch:
+    - CyclicBarrier
+    - Phaser.
+3. Framework
+    - Executor
+    - Folk join:
