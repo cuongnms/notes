@@ -13,13 +13,20 @@
     - Live lock: Xảy ra khi 2 thread rơi vào trạng thái liên tục thay đổi trạng thái dựa vào thread còn lại và không thể xử lý tiếp.
     - Resource starvation: Xảy ra khi 1 thread phải chờ đợi rất lâu hoặc không thể lấy được resource để thực hiện
     - Priority inversion: Xảy ra khi thread có mức ưu tiên thấp giữ resource mà thread có mức ưu tiên cao đang cần. Thread này đc finish trước thread có mức ưu tiên cao hơn.
-2. Các cơ chế đồng bộ
-    - synchonize keywork: Cho phép định nghĩa vùng code hoặc method cần chạy đồng bộ
-    - Lock:
+2. State of thread in java:
+    - New: Thread được tạo nhưng chưa thể start.
+    - Runnable: Thread đã có thể chạy hoặc đang đợi resource từ thread khác tùy theo scheduler lập lịch.
+    - Blocked: Thread đang đợi lock.
+    - Waiting: Thread đợi action từ thread khác.
+    - Time waiting: Thread đợi action từ thread khác nhưng có set limit time
+    - Terminate: Thread được kết thúc xử lý
+2. Các cơ chế đồng bộ.
+    - synchonize keywork: Cho phép định nghĩa vùng code hoặc method cần chạy đồng bộ.
+    - Lock: Chỉ cho phép một thread truy cập vào block code bị lock và k chia sẻ cho các thread nào khác.
     - Semaphore:
     - CountdownLatch:
-    - CyclicBarrier
-    - Phaser.
+    - CyclicBarrier:
+    - Phaser:
 3. Framework
-    - Executor
-    - Folk join:
+    - Executor: Sử dụng khi cần xử lý logic mang tính độc lập
+    - Folk join: Sử dụng khi cần xử lý logic có tính đệ quy

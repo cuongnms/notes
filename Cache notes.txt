@@ -5,6 +5,11 @@
 		- Frontend: Web browser cache, CDN
 		- Backend: Load balancer cache
 
+2. Browser cache.
+    - Lưu data static (html, js, css) ở local để tối ưu tốc độ khi load page.
+    - Server gửi thông tin expired của resource vào response header cho phép browser check thời gian hết hạn của resource.
+        + Dựa vào Etag, cache-control, expires (old), last-modified (old)
+
 2. Cache strategy
 	- Cache aside: 
 		+ Application có thể giao tiếp với cả cache và database.

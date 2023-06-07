@@ -1,0 +1,6 @@
+1. Cơ chế xác thực người dùng:
+    - Basic: Send username/password đã mã hóa tới server để xác thực.
+    - Session Cookie: Server sau khi validate thông tin login sẽ tạo sessionId và lưu lại đồng thời trả về client thông qua header. Từ những request sau client chỉ cần đính kèm sessionId
+    - Token: Server tạo token và gửi lại cho client. Thông thường là jwt.
+    - OTP:
+    - OAuth:
